@@ -1,0 +1,6 @@
+[server]
+runMode = 'debug'
+httpPort = 7000
+readTimeout = 60
+writeTimeout = 60
+
