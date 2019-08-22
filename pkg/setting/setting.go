@@ -3,13 +3,16 @@ package setting
 import (
 	"github.com/BurntSushi/toml"
 	"log"
+	"rollcat/pkg/constants"
 	"sync"
 	"time"
 )
 
 var (
-	once         sync.Once
+	once sync.Once
+
 	conf         *Conf
+	GinLogPath   string
 	RunMode      string
 	HttpPort     int
 	ReadTimeout  time.Duration
@@ -22,8 +25,14 @@ var (
 )
 
 type Conf struct {
+	App      `toml:"app"`
 	Server   `toml:"server"`
 	Database `toml:"database"`
+}
+
+type App struct {
+	GinLogPath string `toml:"ginLogPath"`
+	SecretKey  string `toml:"secretKey"`
 }
 
 type Server struct {
@@ -43,12 +52,19 @@ type Database struct {
 
 func init() {
 	once.Do(func() {
-		if _, err := toml.DecodeFile("conf/conf.toml", &conf); err != nil {
+		if _, err := toml.DecodeFile(constants.FPath, &conf); err != nil {
 			log.Fatalf("Failed to parse 'conf/conf.toml': %v ", err)
 		}
 
+		// App
+		GinLogPath = conf.GinLogPath
+
 		// Server
-		RunMode = conf.RunMode
+		if conf.RunMode == "" {
+			RunMode = constants.DebugMode
+		} else {
+			RunMode = conf.RunMode
+		}
 		HttpPort = conf.HttpPort
 		ReadTimeout = conf.ReadTimeout * time.Second
 		WriteTimeout = conf.WriteTimeout * time.Second
