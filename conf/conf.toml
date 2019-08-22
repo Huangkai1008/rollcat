@@ -4,3 +4,9 @@ httpPort = 7000
 readTimeout = 60
 writeTimeout = 60
 
+[database]
+type = 'mysql'
+host = '127.0.0.1:3306'
+name = 'rollcat'
+user = 'root'
+password = '111111'
