@@ -1,8 +1,6 @@
 # RollCat
-----------
 
 RollCat是一个使用[gin](https://github.com/gin-gonic/gin)框架搭建的在线流媒体/直播网站平台。
-
 
 ## 目录
 
