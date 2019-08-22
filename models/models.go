@@ -70,4 +70,6 @@ func init() {
 	db.SingularTable(true) // 禁用复数表
 	db.DB().SetMaxIdleConns(10)
 	db.DB().SetMaxOpenConns(100)
+
+	db.AutoMigrate(&User{})
 }
