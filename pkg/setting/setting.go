@@ -13,6 +13,7 @@ var (
 
 	conf         *Conf
 	GinLogPath   string
+	SecretKey    string
 	RunMode      string
 	HttpPort     int
 	ReadTimeout  time.Duration
