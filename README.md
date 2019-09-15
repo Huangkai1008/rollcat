@@ -24,4 +24,4 @@ go mod download                 # Add the libs
 ```
 
 ## License
-[MIT](https://choosealicense.com/lice:wqnses/mit/)
+[MIT](https://www.mit-license.org/)

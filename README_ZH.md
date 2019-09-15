@@ -24,5 +24,5 @@ go mod download                 # Add the libs
 ```
 
 ## 许可证
-[MIT](https://choosealicense.com/lice:wqnses/mit/)
+[MIT](https://www.mit-license.org/)
     
